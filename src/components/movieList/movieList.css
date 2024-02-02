@@ -1,0 +1,43 @@
+.movie__list {
+  padding: 0 3rem 3rem 3rem;
+}
+
+.list__title {
+  font-size: 1.75rem;
+  margin: 2.5rem;
+}
+
+.list__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.loadMore-div {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+.loadMore-btn {
+  font-size: 18px;
+  padding: 4px 4px;
+  border-radius: 5px;
+  color: black;
+  background-color: white;
+
+  /* margin: 0 auto; */
+}
+
+.page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-btnn {
+  display: flex;
+  gap: 5px;
+}
+
+.nav-btnn button {
+  padding: 4px;
+}
