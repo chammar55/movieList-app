@@ -41,3 +41,13 @@
 .nav-btnn button {
   padding: 4px;
 }
+
+.clicked {
+  background-color: white;
+  color: black;
+}
+
+.notClicked {
+  background-color: gray;
+  color: rgb(214, 214, 214);
+}

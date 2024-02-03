@@ -9,6 +9,7 @@ const MovieList = () => {
   const { type } = useParams();
   const [loading, setLoading] = useState(true);
   const [itertainmentType, setItertainmentType] = useState("movie");
+  const [btnClicked, setBtnClicked] = useState(true);
 
   useEffect(() => {
     getData();
@@ -56,6 +57,7 @@ const MovieList = () => {
 
   const handleInterType = (item) => {
     setItertainmentType(item);
+    setBtnClicked(!btnClicked);
     setPage(1);
   };
 
@@ -72,9 +74,31 @@ const MovieList = () => {
           </span>
         </h2>
         {type !== "upcoming" && (
-          <div className="nav-btnn">
-            <button onClick={() => handleInterType("movie")}>Movies</button>
-            <button onClick={() => handleInterType("tv")}>Tv Shows</button>
+          <div className="nav-btnn" style={{ display: "flex" }}>
+            <button
+              style={{
+                borderTopLeftRadius: "10px",
+                borderBottomLeftRadius: "10px",
+                flex: 1, // Use flex to make the buttons equal width
+                whiteSpace: "nowrap",
+              }}
+              className={btnClicked ? "clicked" : "notClicked"}
+              onClick={() => handleInterType("movie")}
+            >
+              <div style={{ width: "70px" }}>Movies</div>
+            </button>
+            <button
+              style={{
+                borderTopRightRadius: "10px",
+                borderBottomRightRadius: "10px",
+                flex: 1, // Use flex to make the buttons equal width
+                whiteSpace: "nowrap",
+              }}
+              className={!btnClicked ? "clicked" : "notClicked"}
+              onClick={() => handleInterType("tv")}
+            >
+              <div style={{ width: "70px" }}>Tv Shows</div>
+            </button>
           </div>
         )}
       </div>

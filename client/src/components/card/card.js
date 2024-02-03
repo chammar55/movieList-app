@@ -3,7 +3,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./card.css";
 import { Link } from "react-router-dom";
 
-const Cards = ({ movie, itertainmentType }) => {
+const Cards = ({ movie, itertainmentType, movieSimilar, movieRecommend }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -26,13 +26,17 @@ const Cards = ({ movie, itertainmentType }) => {
             movie.id
           }`}
           style={{ textDecoration: "none", color: "white" }}
+          target={movieRecommend || movieSimilar ? "_blank" : "_self"}
         >
           <div className="cards">
             <img
               className="cards__img"
-              src={`https://image.tmdb.org/t/p/original${
-                movie ? movie.poster_path : ""
-              }`}
+              src={
+                movie && movie.poster_path
+                  ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+                  : "/public/images/no-poster.png"
+              }
+              alt={movie ? movie.title : "Movie Poster"}
             />
 
             <div className="cards__overlay">
