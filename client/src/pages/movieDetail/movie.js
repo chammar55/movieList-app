@@ -4,6 +4,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useParams } from "react-router-dom";
 import Cards from "../../components/card/card";
 import YouTube from "react-youtube";
+import AddToList from "../../components/AddToList/AddToList";
+import MovieTrailer from "../MovieTrailer/MovieTrailer";
 
 const Movie = () => {
   const [currentMovieDetail, setMovie] = useState();
@@ -24,6 +26,8 @@ const Movie = () => {
     getData();
     window.scrollTo(0, 0);
   }, []);
+
+  const auth = localStorage.getItem("token");
 
   const getData = () => {
     let apiUrl;
@@ -126,7 +130,6 @@ const Movie = () => {
   };
 
   // console.log("Recommended ");
-  // console.log(movieTrailer);
 
   const opts = {
     height: "390",
@@ -266,6 +269,7 @@ const Movie = () => {
               src={`https://image.tmdb.org/t/p/original${
                 currentMovieDetail ? currentMovieDetail.backdrop_path : ""
               }`}
+              alt=""
             />
           </div>
           <div className="movie__detail">
@@ -276,6 +280,7 @@ const Movie = () => {
                   src={`https://image.tmdb.org/t/p/original${
                     currentMovieDetail ? currentMovieDetail.poster_path : ""
                   }`}
+                  alt=""
                 />
               </div>
             </div>
@@ -325,6 +330,11 @@ const Movie = () => {
                     : ""}
                 </div>
               </div>
+
+              {/*start Add to watch list******************************************** */}
+              {auth ? <AddToList movieId={id} type={type} /> : " "}
+
+              {/*End Add to watch list******************************************** */}
               <div className="movie__detailRightBottom">
                 <div className="synopsisText">Synopsis</div>
                 <div>
@@ -356,7 +366,7 @@ const Movie = () => {
 
           {/* ***************************** Official Video********************************** */}
           <div className="movie__heading">Official Video</div>
-          {movieTrailer ? (
+          {/* {movieTrailer ? (
             <YouTube
               videoId={movieTrailer}
               opts={opts}
@@ -364,8 +374,8 @@ const Movie = () => {
             />
           ) : (
             <p>No official video found</p>
-          )}
-
+          )} */}
+          <MovieTrailer movieId={id} type={type} />
           {/* ***************************** Similar Movies/TV********************************** */}
 
           <div className="movie__heading">
@@ -460,6 +470,7 @@ const Movie = () => {
                           "https://image.tmdb.org/t/p/original" +
                           company.logo_path
                         }
+                        alt=""
                       />
                       <span>{company.name}</span>
                     </span>

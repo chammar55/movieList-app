@@ -30,6 +30,7 @@ const Cards = ({ movie, itertainmentType, movieSimilar, movieRecommend }) => {
         >
           <div className="cards">
             <img
+              loading="lazy"
               className="cards__img"
               src={
                 movie && movie.poster_path

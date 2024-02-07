@@ -1,7 +1,7 @@
 /* ****************************** PopUp Dialog Box******************************** */
 .popup {
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
@@ -11,6 +11,8 @@
   /* display: none; */
 }
 .popup-content {
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   background-color: white;
   margin: 10% auto;
@@ -19,20 +21,31 @@
   width: 30%;
   font-weight: bolder;
 }
-.popup-content button {
+/* .popup-content button {
   display: block;
   margin: 0 auto;
-}
-.popup-content button {
+} */
+/* .popup-content button {
   margin-top: 8px;
   outline: none;
-  padding: 4px;
+  padding: 0px 10px;
   border-radius: 8px;
   font-size: 18px;
   border: none;
   background-color: black;
   color: white;
+} */
+
+.close-btn {
+  background: black;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
 }
+
 .show {
   display: block;
 }
@@ -42,7 +55,8 @@ h1 {
 
 .dialog-con input {
   outline: none;
-  padding: 4px;
+  width: 100%;
+  padding: 6px;
   border-radius: 8px;
   font-size: 18px;
   border: 1px solid black;
@@ -50,10 +64,19 @@ h1 {
 
 .dialog-con button {
   outline: none;
-  padding: 4px;
+  padding: 8px;
+  width: 100%;
   border-radius: 8px;
   font-size: 18px;
   border: none;
   background-color: red;
   color: white;
+}
+button:hover {
+  background-color: none !important;
+}
+
+.form-form {
+  display: flex;
+  justify-content: center;
 }

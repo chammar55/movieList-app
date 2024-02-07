@@ -7,9 +7,10 @@ const SearchMovies = ({}) => {
   const [searchMovies, setsearchMovies] = useState([]);
   const [page, setPage] = useState(1); // Track the current page
   const { movieName } = useParams();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [loadingVisible, setLoadingVisible] = useState(false);
   const [itertainmentType, setItertainmentType] = useState("movie");
-  const [btnClicked, setBtnClicked] = useState(true);
+  const [btnClicked, setBtnClicked] = useState("movie");
   // const [searchMovie, setSearchMovie] = useState("inter");
 
   useEffect(() => {
@@ -17,6 +18,10 @@ const SearchMovies = ({}) => {
   }, [page, itertainmentType, movieName]); // Fetch data whenever the page or type changes
 
   const getData = () => {
+    if (page > 1) {
+      setLoadingVisible(true);
+    }
+
     setLoading(true); // Set loading to true before fetching data
 
     fetch(
@@ -27,8 +32,15 @@ const SearchMovies = ({}) => {
     )
       .then((res) => res.json())
       .then((data) => {
+        // Filter out entries with missing or undefined backdrop_path
+        const filteredResults = data.results.filter(
+          (result) =>
+            result.backdrop_path !== null && result.poster_path !== null
+        );
+
+        // console.log(filteredResults);
         setsearchMovies((prevData) =>
-          page === 1 ? data.results : [...prevData, ...data.results]
+          page === 1 ? filteredResults : [...prevData, ...data.results]
         );
         setLoading(false); // Set loading to false after data is fetched
       })
@@ -43,9 +55,24 @@ const SearchMovies = ({}) => {
 
   const handleInterType = (item) => {
     setItertainmentType(item);
-    setBtnClicked(!btnClicked);
+    setBtnClicked(item);
     setPage(1);
   };
+
+  const handleScroll = () => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+
+    if (scrollTop + clientHeight >= scrollHeight - 10 && !loading) {
+      handleLoadMore();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [loading]);
 
   return (
     <div className="movie__list">
@@ -68,7 +95,7 @@ const SearchMovies = ({}) => {
               flex: 1, // Use flex to make the buttons equal width
               whiteSpace: "nowrap",
             }}
-            className={btnClicked ? "clicked" : "notClicked"}
+            className={btnClicked === "movie" ? "clicked" : "notClicked"}
             onClick={() => handleInterType("movie")}
           >
             <div style={{ width: "70px" }}>Movies</div>
@@ -80,7 +107,7 @@ const SearchMovies = ({}) => {
               flex: 1, // Use flex to make the buttons equal width
               whiteSpace: "nowrap",
             }}
-            className={!btnClicked ? "clicked" : "notClicked"}
+            className={btnClicked === "tv" ? "clicked" : "notClicked"}
             onClick={() => handleInterType("tv")}
           >
             <div style={{ width: "70px" }}>Tv Shows</div>
@@ -96,18 +123,19 @@ const SearchMovies = ({}) => {
           />
         ))}
       </div>
-      <div className="loadMore-div">
-        {/* <button onClick={handleLoadMore} className="loadMore-btn">
-          Load More
-        </button> */}
-        <button
-          className="loadMore-btn"
-          onClick={handleLoadMore}
-          disabled={loading}
-        >
-          {loading ? "Loading..." : "Load More"}
-        </button>
-      </div>
+      {loadingVisible ? (
+        <div className="loadMore-div">
+          <button
+            className="loadMore-btn"
+            onClick={handleLoadMore}
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Load More"}
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

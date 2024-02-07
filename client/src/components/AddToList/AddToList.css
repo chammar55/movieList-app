@@ -1,0 +1,57 @@
+/* ***************************************************************** */
+.rating-div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  margin: 10px 0;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+label {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+select {
+  padding: 8px;
+  font-size: 14px;
+  width: 50%;
+  /* margin-bottom: 16px; */
+}
+
+.addToList-btn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  width: 230px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* button:hover {
+  background-color: #45a049;
+} */

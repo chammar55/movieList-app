@@ -16,12 +16,23 @@ a > span {
   margin: 0 30px;
   font-size: 1.3rem;
   cursor: pointer;
-  color: white;
+  /* color: white; */
+}
+/* Apply transition to links */
+.Link {
+  text-decoration: none;
+  color: gray; /* Default color */
+  transition: color 0.3s ease; /* Smooth transition for color change */
 }
 
-a > span:hover {
-  color: red;
+/* Apply active styles to active links */
+.Link.active {
+  color: red; /* Active color */
 }
+
+/* a > span:hover {
+  color: red;
+} */
 
 .header__icon {
   width: 80px;
@@ -63,6 +74,11 @@ a > span:hover {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.margin-top {
+  margin-top: -10px;
 }
 
 /* ************************* DropDown Menu*************************** */
@@ -77,19 +93,35 @@ a > span:hover {
   position: absolute;
   background-color: #f9f9f9;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 10;
   right: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 105px;
+  left: -23px;
+}
+
+.dropdown-content a {
+  padding: 8px 16px;
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
 }
 
 /* Style for individual dropdown items */
-.dropdown-content p {
+/* .dropdown-content p {
   padding: 10px;
   margin: 0;
   font-size: 14px;
   cursor: pointer;
   color: #333;
   width: 70px;
-}
+} */
 
 /* Hover effect on dropdown items */
 .dropdown-content p:hover {
@@ -112,3 +144,5 @@ a > span:hover {
   background-color: rgba(0, 0, 0, 0.4);
   /* display: none; */
 }
+
+/* Your CSS file */

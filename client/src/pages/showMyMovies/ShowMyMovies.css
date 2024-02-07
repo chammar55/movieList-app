@@ -1,0 +1,38 @@
+.mCard {
+  display: flex;
+  justify-content: space-evenly;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed; /* Add this line to make cells have equal width */
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  width: 20%; /* You can adjust the width based on your preference */
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+th {
+  background-color: orange;
+}
+
+td button {
+  padding: 4px 8px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  width: 50px;
+}
+
+td button:hover {
+  background-color: gray;
+}
