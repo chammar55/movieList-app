@@ -6,6 +6,7 @@ import Cards from "../../components/card/card";
 import YouTube from "react-youtube";
 import AddToList from "../../components/AddToList/AddToList";
 import MovieTrailer from "../MovieTrailer/MovieTrailer";
+import Reviews from "../../components/Reviews/Reviews";
 
 const Movie = () => {
   const [currentMovieDetail, setMovie] = useState();
@@ -343,6 +344,9 @@ const Movie = () => {
               </div>
             </div>
           </div>
+          {/* ***************************** Movie Reviews********************************** */}
+          <div className="movie__heading">Reviews</div>
+          <Reviews type={type} id={id} />
           {/* ***************************** Top Cast********************************** */}
           <div className="movie__heading">Top Cast</div>
           <div className="castMainDiv">

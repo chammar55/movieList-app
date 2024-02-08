@@ -37,6 +37,7 @@ select {
   padding: 8px;
   font-size: 14px;
   width: 50%;
+  border-radius: 5px;
   /* margin-bottom: 16px; */
 }
 
@@ -47,7 +48,7 @@ select {
   width: 230px;
   font-size: 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }

@@ -9,6 +9,7 @@ import ShowMyMovies from "./pages/showMyMovies/ShowMyMovies";
 import PleaseLogin from "./components/PleaseLogin/PleaseLogin";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import PrivateComponent from "./pages/PrivateComponent";
+import MoreReviews from "./components/Reviews/MoreReviews";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
           <Route path="tv/:id" element={<Movie />}></Route> */}
           <Route path="/details/:type/:id" element={<Movie />} />
           <Route path="/movies/:type" element={<MovieList />}></Route>
+          <Route
+            path="/moreReviews/:type/:id"
+            element={<MoreReviews />}
+          ></Route>
           {/* <Route path="movies/:type" element={<MovieList />}></Route> */}
 
           {/* <Route path="/pleaseLogin" element={<PleaseLogin />}></Route> */}
