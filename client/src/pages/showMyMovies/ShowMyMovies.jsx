@@ -49,13 +49,6 @@ function ShowMyMovies() {
 
   return (
     <div>
-      {/* ShowMyMovies */}
-      {/* <div className="mCard">
-         <h1>Image</h1>
-        <h1>Title</h1>
-        <h1>Score</h1>
-        <h1>Type</h1>
-        <h1>Edit</h1>  </div> */}
       <table>
         <tr>
           <th>Image</th>

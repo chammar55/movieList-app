@@ -45,7 +45,7 @@ function Reviews({ type, id }) {
     setShowFullContent(!showFullContent);
   };
 
-  console.log(reviews);
+  // console.log(reviews);
 
   return (
     <>
@@ -93,7 +93,7 @@ function Reviews({ type, id }) {
           ))}
           {reviews.length > visibleReviews && (
             <div className="review-showMore-btn">
-              <button onClick={handleShowMore}>
+              <button onClick={handleShowMore} style={{ cursor: "pointer" }}>
                 {reviews.length - 2} More{" "}
                 {reviews.length > 3 ? "Reviews" : "Review"}{" "}
                 <span>
