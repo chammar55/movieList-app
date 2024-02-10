@@ -96,9 +96,9 @@ function DialogBox({ isPopupVisible, setPopupVisible, pageType }) {
   };
 
   return (
-    <div>
+    <div className="">
       {isPopupVisible && (
-        <div id="myPopup" className="popup" onClick={handleOutsideClick}>
+        <div id="myPopup" className="popup " onClick={handleOutsideClick}>
           <div className="popup-content">
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h1 style={{ color: "black" }}>
