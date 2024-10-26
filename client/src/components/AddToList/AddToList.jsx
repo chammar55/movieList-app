@@ -29,7 +29,7 @@ function AddToList({ movieId, type }) {
     if (res.status === 422 || !data) {
       console.log("error ");
     } else {
-      setMyMovie(data);
+      setMyMovie(Array.isArray(data) ? data : []);
     }
   };
 
